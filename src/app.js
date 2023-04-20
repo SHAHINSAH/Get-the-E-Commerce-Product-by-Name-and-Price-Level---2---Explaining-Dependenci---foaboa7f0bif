@@ -8,7 +8,7 @@ const products = JSON.parse(fs.readFileSync(`${__dirname}/data/products.json`));
 //Middlewares
 app.use(express.json());
 app.get("/api/v1/products/:id", (req, res)=>{
-    const product = products.find((el)=> el.id === req.params.id);
+    const product = products.find((el)=> el.id ===Number(req.params.id));
     if(!product){
         return res.status(404).json({
             status: "fail",
